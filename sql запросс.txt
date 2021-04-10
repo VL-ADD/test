@@ -1,0 +1,32 @@
+имеються таблицы
+
+таблица список продуктов
+
+product
+------------------------
+| id_name |  name       |
+------------------------
+|         |             |
+------------------------
+
+таблица список категорий
+
+category
+------------------------
+| cat_id  | cat_name   |
+------------------------
+|         |            |
+------------------------
+
+карта продуктов и категорий
+
+map
+-----------------------
+| p_id     | c_id     |
+-----------------------
+|          |          |
+-----------------------
+
+выбираем все пары продукта с названием "имя" и его категорий
+
+SELECT  product.name, category.name FROM product, category, map WHERE product.name = "имя" AND category.id = (SELECT map.c_id FROM map WHERE map.p_id = (SELECT product.id_name FROM product WHERE product.name = "имя"))
